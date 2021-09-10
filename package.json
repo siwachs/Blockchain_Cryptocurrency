@@ -1,0 +1,28 @@
+{
+  "name": "project-blockchain",
+  "version": "1.0.0",
+  "description": "Blockchain crypto from Scratch",
+  "main": "index.js",
+  "scripts": {
+    "dev-test": "nodemon Testing",
+    "test": "jest --watchAll",
+    "start": "node ./app",
+    "dev": "nodemon ./app"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.1.0",
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "crypto-js": "^4.1.1",
+    "elliptic": "^6.5.4",
+    "express": "^4.17.1",
+    "uuid": "^7.0.1",
+    "ws": "^8.2.1"
+  }
+}
