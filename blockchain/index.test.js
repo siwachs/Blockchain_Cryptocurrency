@@ -1,27 +1,21 @@
 const BlockChain=require('./index');
 const Block=require('./block');
 
-//describe this overall test with describe function from jest 2nd parameter is arrow function
 describe('BlockChain',()=>{
     let blc,blc2,blc3;
-    //we are check for a chain so we need more than one blocks
+    
     beforeEach(
         ()=>{
-            //we want to test instance of blockchain
+            
             blc=new BlockChain();
-            //in every time a instance is created so that way one test not affect by other
-
             blc2=new BlockChain();
-
             blc3=new BlockChain();
         }
-
-        //now use our unit test handle with it function
+        //use this blocks for very unit test
     );
 
     it(
         'BlockChain starts with Genesis Block',()=>{
-            //check 1st block in chain array is genesis
             expect(blc.chain[0]).toEqual(Block.genesis());
         }
     );

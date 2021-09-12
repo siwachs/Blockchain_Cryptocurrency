@@ -6,4 +6,3 @@ const INITIAL_BALANCE=500;
 const MINING_REWARD=50;
 
 module.exports={DIFFICULTY,MINE_RATE,INITIAL_BALANCE,MINE_RATE,MINING_REWARD};
-//use ES6 destructing syntax

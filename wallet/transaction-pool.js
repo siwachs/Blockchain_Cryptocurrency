@@ -1,7 +1,3 @@
-//collect all transaction in pool and add it to blockchain
-
-//const Transaction = require("./transaction");
-
 const Transaction = require('../wallet/transaction');
 
 class TransactionPool
@@ -19,8 +15,7 @@ class TransactionPool
     updateOrAddTransaction(transaction)
     {
         let transactionWithId=this.transactions.find(t=>t.id === transaction.id);
-        //if not exist in pool this var will be undef
-
+        
         if(transactionWithId){
             this.transactions[this.transactions.indexOf(transactionWithId)] =transaction;
         }

@@ -1,37 +1,30 @@
 const Block=require('./block');
-//need block class because blockchain use chain of blocks
 
 class BlockChain
 {
     constructor()
     {
-        //give this class a chain
-        this.chain=[Block.genesis()]; //give it the genesis or Dummy block
-        //that way that chain get started with some values
-
+        this.chain=[Block.genesis()];
+        //first block in chain is always genesis
     }
 
     addBlock(data)
     {
-        //aceess last block from chain
-        //const last_block=this.chain[this.chain.length-1];
-        //create a block and add it to the chain
-        
-        //add it to chain array
+        //add block to last of chain by using its prev block
         const block=Block.mineBlock(this.chain[this.chain.length-1],data);
+
         this.chain.push(block);
-        
         return block;
     }
 
     isValidChain(chain)
     {
-        //check incoming chain start with genesis block
+        //for valid incoming chain must have a genesis block
         if(JSON.stringify(chain[0]) !==JSON.stringify(Block.genesis())) return false;
         
-        //it means incoming genesis block is not valid so chain is not valid
         for (let i=1;i<chain.length;i++)
         {
+            //get last block hash and use it to verify its next block
             const block=chain[i];
             const last_block=chain[i-1];
 
@@ -39,13 +32,12 @@ class BlockChain
             return false;
             //let assume data is tempered
         }
-
-    // if it pass all test then block is valid
-    return true;
+        return true;
     }
 
     replaceChain(newChain)
     {
+        //replace with chain which is longer among all its peers
         if(newChain.length <=this.chain.length)
         {
             console.log('Recieved chain is less than or equal to current chain');
@@ -54,12 +46,8 @@ class BlockChain
             console.log('Not a Valid chain');
             return;
         }
-
-        //if pass both then we can add our chain
         console.log('replacing blockchian with new chain');
         this.chain=newChain;
     }
 }
-
 module.exports=BlockChain;
-//so that other files can acess this class we just created
